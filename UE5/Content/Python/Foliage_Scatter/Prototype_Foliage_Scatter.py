@@ -1,6 +1,6 @@
 from unreal import , EditorActorSubsystem, get_editor_subsystem, log_warning, HoudiniPublicAPIWorldInput, \
     load_asset, Vector, uclass, Object
-from Foliage_Scatter.library import hou_utils
+from Prototype_Foliage_Scatter.library import hou_utils
 from sys import argv
 
 

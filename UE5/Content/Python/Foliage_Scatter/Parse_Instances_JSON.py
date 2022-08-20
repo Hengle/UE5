@@ -1,3 +1,4 @@
+"""This script is part of python script node"""
 import json
 from unreal import Transform, Vector, Quat, load_asset, InstancedFoliageActor, get_editor_subsystem, \
     UnrealEditorSubsystem, GameplayStatics, EditorActorSubsystem, AssetRegistryHelpers, AssetToolsHelpers, \
@@ -7,6 +8,7 @@ import os
 
 
 class CreateInstancesFromJson:
+
     FOLIAGE_TYPE_PREFIX = "SMF"
     asset_registry = AssetRegistryHelpers.get_asset_registry()
     asset_tools = AssetToolsHelpers.get_asset_tools()
