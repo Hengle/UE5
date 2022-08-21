@@ -41,9 +41,11 @@ def create_list_of_transforms(json_data: dict,
         in_blueprint_transform: Actor level Transform
     """
     transforms_list = []
+    # loop over static meshes
     for static_mesh_path, instances in json_data.items():
         if static_mesh_path != in_static_mesh.get_path_name():
             continue
+        # loop over transforms
         for index, transform in instances.items():
             location_list = transform.get("location")
             orient_list = transform.get("orient")
@@ -60,6 +62,10 @@ def create_list_of_transforms(json_data: dict,
             # Create relative transform to actor xform in level because they are different
             # We spawn our instances in original BP without transforms, so we need to apply relative transform
             relative_transform = unreal.MathLibrary.make_relative_transform(xform, in_blueprint_transform)
+            # Skip instances with zero scale3d
+            if unreal.MathLibrary.equal_equal_vector_vector(relative_transform.scale3d, unreal.Vector(0, 0, 0)):
+                continue
+                # relative_transform.scale3d += unreal.Vector(0.02, 0.02,  )
             transforms_list.append(relative_transform)
     return transforms_list
 
