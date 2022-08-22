@@ -10,6 +10,7 @@ unreal.log(f'\t\t Create Blueprint From Static Mesh')
 class MyPyFunctionLibrary(unreal.BlueprintFunctionLibrary):
     @unreal.ufunction(params=[str, ], ret=unreal.BlueprintFactory, static=True, meta=dict(Category="Python"))
     def get_blueprint_factory(in_object_path):
+        """We cannot get Factory object in Unreal with blueprints so we need to get in python"""
         factory = unreal.BlueprintFactory()
         if not in_object_path:
             factory.set_editor_property(name="parent_class", value=unreal.Actor)
