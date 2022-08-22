@@ -1,5 +1,10 @@
 import unreal
 
+unreal.log(f'Python Asset Utilities nodes imported')
+unreal.log(f'\tTools:')
+unreal.log(f'\t\t Get Blueprint Factory node')
+unreal.log(f'\t\t Create Blueprint From Static Mesh')
+
 
 @unreal.uclass()
 class MyPyFunctionLibrary(unreal.BlueprintFunctionLibrary):
