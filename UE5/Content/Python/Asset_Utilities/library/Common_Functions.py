@@ -1,4 +1,5 @@
-from unreal import EditorActorSubsystem, get_editor_subsystem, EditorUtilityLibrary, EditorAssetLibrary, Object
+from unreal import EditorActorSubsystem, get_editor_subsystem, EditorUtilityLibrary, EditorAssetLibrary, Object, \
+    GameplayStatics, UnrealEditorSubsystem
 
 
 def get_selected_actors():
@@ -28,3 +29,8 @@ def get_selected_assets():
 
 def save_loaded_asset(in_asset: Object):
     EditorAssetLibrary.save_loaded_asset(in_asset)
+
+
+def get_actor_by_class(in_class):
+    world = get_editor_subsystem(UnrealEditorSubsystem).get_editor_world()
+    return GameplayStatics.get_actor_of_class(in_class, world)

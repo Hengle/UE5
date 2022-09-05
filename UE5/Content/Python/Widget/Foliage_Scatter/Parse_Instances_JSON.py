@@ -2,7 +2,7 @@
 import json
 from unreal import Transform, Vector, Quat, load_asset, InstancedFoliageActor, get_editor_subsystem, \
     UnrealEditorSubsystem, GameplayStatics, EditorActorSubsystem, AssetRegistryHelpers, AssetToolsHelpers, \
-    FoliageType_InstancedStaticMesh, FoliageType_InstancedStaticMeshFactory, EditorAssetLibrary
+    FoliageType_InstancedStaticMesh, FoliageType_InstancedStaticMeshFactory, EditorAssetLibrary, Name
 from sys import argv
 import os
 
@@ -42,7 +42,7 @@ class CreateInstancesFromJson:
         for static_mesh, instances in in_json_data.items():
             used_static_meshes.append(static_mesh)
             static_mesh_path = "/".join(static_mesh.split("/")[:-1])
-            assets_in_folder = self.asset_registry.get_assets_by_path(static_mesh_path)
+            assets_in_folder = self.asset_registry.get_assets_by_path(Name(static_mesh_path))
             for index, asset_data in enumerate(assets_in_folder):
                 if asset_data.asset_class == "FoliageType_InstancedStaticMesh":
                     loaded_asset = asset_data.get_asset()
@@ -88,7 +88,7 @@ class CreateInstancesFromJson:
                 # Create unreal data types
                 location = Vector(location_list[0], location_list[1], location_list[2])
                 rotation = Quat(orient_list[0], orient_list[1], orient_list[2], orient_list[3])
-                scale = Vector(float_scale, float_scale, float_scale)
+                scale = Vector(float_scale[0], float_scale[1], float_scale[2])
                 # Create xform from generated data types
                 xform = Transform()
                 xform.rotation = rotation

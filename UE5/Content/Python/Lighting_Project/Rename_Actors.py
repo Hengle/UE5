@@ -1,5 +1,5 @@
 from unreal import ScopedEditorTransaction, EditorUtilityLibrary, uclass, log
-from LightUtils.library import Common_Functions
+from Lighting_Project.library import Common_Functions
 from sys import argv
 
 

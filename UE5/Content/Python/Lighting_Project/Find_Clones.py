@@ -1,7 +1,7 @@
 from unreal import AttachmentRule, ComponentMobility, ScopedEditorTransaction, Actor, EditorLevelLibrary, \
     Vector, Rotator, log_warning, log
 import sys
-from LightUtils.library import Common_Functions
+from Lighting_Project.library import Common_Functions
 
 
 def find_clones(in_distance_threshold):

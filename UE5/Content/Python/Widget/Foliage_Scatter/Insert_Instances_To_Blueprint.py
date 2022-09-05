@@ -19,6 +19,8 @@ def check_if_is_blueprint():
 
 is_blueprint, blueprint_path = check_if_is_blueprint()
 ######################################
+# END
+######################################
 
 
 import unreal

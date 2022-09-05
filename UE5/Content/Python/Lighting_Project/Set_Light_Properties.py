@@ -1,5 +1,5 @@
 from unreal import LightComponent, log
-from LightUtils.library import Common_Functions
+from Lighting_Project.library import Common_Functions
 import sys
 
 

@@ -1,5 +1,5 @@
 from unreal import BlueprintGeneratedClass, StaticMeshActor, EditorUtilityLibrary, uclass, log
-from LightUtils.library import Common_Functions
+from Lighting_Project.library import Common_Functions
 import re
 
 
