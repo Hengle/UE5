@@ -1,4 +1,6 @@
-"""These scripts are part of python script node"""
+"""These scripts are part of python script node
+Part of insert foliage to BP
+"""
 import unreal
 
 

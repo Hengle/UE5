@@ -1,4 +1,7 @@
-"""This script is part of python script node"""
+"""This script is part of python script node
+Parse from JSON to Foliage
+"""
+
 import json
 from unreal import Transform, Vector, Quat, load_asset, InstancedFoliageActor, get_editor_subsystem, \
     UnrealEditorSubsystem, GameplayStatics, EditorActorSubsystem, AssetRegistryHelpers, AssetToolsHelpers, \
@@ -88,7 +91,8 @@ class CreateInstancesFromJson:
                 # Create unreal data types
                 location = Vector(location_list[0], location_list[1], location_list[2])
                 rotation = Quat(orient_list[0], orient_list[1], orient_list[2], orient_list[3])
-                scale = Vector(float_scale[0], float_scale[1], float_scale[2])
+                # Scale is one value in json do not use float_scale[0]...
+                scale = Vector(float_scale, float_scale, float_scale)
                 # Create xform from generated data types
                 xform = Transform()
                 xform.rotation = rotation
