@@ -1,4 +1,5 @@
 import unreal
+import re
 
 unreal.log(f'Python Asset Utilities nodes imported')
 unreal.log(f'\tTools:')
@@ -32,15 +33,13 @@ class MyPyFunctionLibrary(unreal.BlueprintFunctionLibrary):
             out_name = "_".join(split_name)
         else:
             out_name = f'{in_prefix}_{mesh_name}'
-        blueprint_name = out_name
+        # Check if name has multiple __
+        fixed_name = re.sub(r'[^a-zA-Z0-9]+', '_', out_name)
         static_mesh_path = "/".join(mesh_path.split("/")[:-1])
         blueprint_path = f'{static_mesh_path}/{in_directory_name}'
         if not unreal.EditorAssetLibrary.does_directory_exist(blueprint_path):
             unreal.EditorAssetLibrary.make_directory(blueprint_path)
-        new_blueprint = asset_tools.create_asset(blueprint_name, blueprint_path, None, factory)
+        new_blueprint = asset_tools.create_asset(fixed_name, blueprint_path, None, factory)
 
         return new_blueprint
-
-
-
 
